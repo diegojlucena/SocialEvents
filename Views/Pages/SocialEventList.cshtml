@@ -1,0 +1,42 @@
+﻿@using System.Drawing
+@using MrCMS.Helpers
+@using MrCMS.Paging
+@using MrCMS.Web.Apps.SocialEvents.Pages
+@model SocialEventList
+@Editable(Model, p => p.BodyContent, true)
+@{
+    var pagedList = ViewData["paged-socialevents"] as IPagedList<SocialEvent>;
+    //var searchModel = ViewData["socialevents-search-model"] as SocialEventSearchModel;
+}
+@if (pagedList != null && !pagedList.Any())
+{
+    <div class="alert alert-info">No events available.</div>
+    <p><a href="/@Model.LiveUrlSegment">Show all</a></p>
+}
+@if (pagedList != null)
+{
+    foreach (var page in pagedList)
+    {
+        if (page.PublishOn != null)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="margin-bottom-0"><a href="/@page.LiveUrlSegment">@page.Name </a></h3>
+                    <span class="small"><strong>@Html.DisplayFor(m => page.BeginsAt) - @Html.DisplayFor(m => page.EndsAt)</strong></span>
+                    @if (!String.IsNullOrEmpty(page.FeatureImage))
+                    {
+                        <div class="left small-margin">
+                            <a href="/@page.LiveUrlSegment" class="margin-top-0">@RenderImage(page.FeatureImage, new Size { Width = 250 })</a>
+
+                        </div>
+                    }
+                    @Editable(page, p => p.Location)
+                </div>
+            </div>
+        }
+    }
+}
+@if (Model.AllowPaging)
+{
+    @Html.PageCurrentPage(pagedList, i => new { Page = i }, PagedListRenderOptions.PageNumbersOnly)
+}

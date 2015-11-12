@@ -1,0 +1,31 @@
+﻿@using MrCMS.Helpers
+@model MrCMS.Web.Apps.SocialEvents.Pages.SocialEvent
+<article>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="margin-top-0">@Editable(Model, p => p.Name, false)</h1>
+            <a href="/@Model.Parent.UrlSegment" class="btn btn-default">Back</a>
+            <p><i class="glyphicon glyphicon-time"></i> @Html.DisplayFor(m => m.BeginsAt) - @Html.DisplayFor(m => m.EndsAt)</p>
+            @if (!String.IsNullOrEmpty(Model.Location))
+            {
+                <p><i class="glyphicon glyphicon-map-marker"></i> @Html.DisplayFor(m => m.Location)</p>
+            }
+            @if (!String.IsNullOrEmpty(Model.Website))
+            {
+                <p><i class="glyphicon glyphicon-globe"></i> @Html.Link(Model.Website, Model.Website, new { target = "_blank" })</p>
+            }
+            @if (!String.IsNullOrEmpty(Model.FeatureImage))
+            {
+                if (!String.IsNullOrEmpty(Model.Website))
+                {
+                    <a href="@Model.Website" target="_blank" class="margin-top-0">@RenderImage(Model.FeatureImage)</a>
+                }
+                else
+                {
+                    <a href="/@Model.LiveUrlSegment" class="margin-top-0">@RenderImage(Model.FeatureImage)</a>
+                }
+            }
+            @Editable(Model, page => page.BodyContent, true)
+        </div>
+    </div>
+</article>
