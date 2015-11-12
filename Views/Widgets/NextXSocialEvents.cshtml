@@ -1,0 +1,13 @@
+﻿@model MrCMS.Web.Apps.SocialEvents.Models.NextXSocialEventsViewModel
+@if (Model != null)
+{
+    if (!String.IsNullOrEmpty(Model.Title))
+    {
+    <h4>@Model.Title</h4>
+    }
+
+    foreach (var article in Model.SocialEvents)
+    {
+    <h4><a href="/@article.LiveUrlSegment">@article.Name</a></h4>
+    }
+}
