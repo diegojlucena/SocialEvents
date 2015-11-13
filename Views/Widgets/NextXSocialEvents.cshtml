@@ -6,8 +6,8 @@
     <h4>@Model.Title</h4>
     }
 
-    foreach (var article in Model.SocialEvents)
+    foreach (var socialEvent in Model.SocialEvents)
     {
-    <h4><a href="/@article.LiveUrlSegment">@article.Name</a></h4>
+    <h4><a href="/@socialEvent.LiveUrlSegment">@socialEvent.Name</a></h4>
     }
 }
