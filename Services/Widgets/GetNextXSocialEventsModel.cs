@@ -25,7 +25,7 @@ namespace MrCMS.Web.Apps.SocialEvents.Services.Widgets
             return new NextXSocialEventsViewModel
             {
                 SocialEvents = _session.QueryOver<SocialEvent>()
-                    .Where(socialEvent => socialEvent.Parent.Id == widget.RelatedSocialEventList.Id && socialEvent.PublishOn != null && socialEvent.BeginsAt >= CurrentRequestData.Now)
+                    .Where(socialEvent => socialEvent.Parent.Id == widget.RelatedSocialEventList.Id && socialEvent.PublishOn != null && socialEvent.EndsAt >= CurrentRequestData.Now)
                     .OrderBy(x => x.BeginsAt).Asc
                     .Take(widget.NumberOfSocialEvents)
                     .Cacheable()
