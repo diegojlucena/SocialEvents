@@ -6,18 +6,21 @@
 </div>
 <div class="form-group">
     @Html.LabelFor(model => model.Location, "Location") <br />
-    @Html.TextBoxFor(model => model.Location)
+    @Html.TextBoxFor(model => model.Location, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Location)
 </div>
 <div class="form-group">
     @Html.LabelFor(model => model.BeginsAt, "Begins At") <br />
-    @Html.EditorFor(model => model.BeginsAt)
+    @Html.EditorFor(model => model.BeginsAt, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.BeginsAt)
 </div>
 <div class="form-group">
     @Html.LabelFor(model => model.EndsAt, "Ends At") <br />
-    @Html.EditorFor(model => model.EndsAt)
+    @Html.EditorFor(model => model.EndsAt, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.EndsAt)
 </div>
-
 <div class="form-group">
     @Html.LabelFor(model => model.Website, "Website") <br />
-    @Html.TextBoxFor(model => model.Website)
+    @Html.TextBoxFor(model => model.Website, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Website)
 </div>
