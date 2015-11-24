@@ -10,7 +10,7 @@ namespace MrCMS.Web.Apps.SocialEvents.Metadata
     {
         public override string IconClass
         {
-            get { return "glyphicon glyphicon-time"; }
+            get { return "glyphicon glyphicon-calendar"; }
         }
 
         public override ChildrenListType ChildrenListType

@@ -14,7 +14,7 @@ namespace MrCMS.Web.Apps.SocialEvents.Metadata
         }
         public override string IconClass
         {
-            get { return "glyphicon glyphicon-list"; }
+            get { return "glyphicon glyphicon-th-list"; }
         }
         
         public override ChildrenListType ChildrenListType
