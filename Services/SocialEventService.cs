@@ -1,4 +1,5 @@
-﻿using MrCMS.Helpers;
+﻿using System;
+using MrCMS.Helpers;
 using MrCMS.Paging;
 using MrCMS.Web.Apps.SocialEvents.Models;
 using MrCMS.Web.Apps.SocialEvents.Pages;
@@ -17,12 +18,13 @@ namespace MrCMS.Web.Apps.SocialEvents.Services
 
         public IPagedList<SocialEvent> GetSocialEvents(SocialEventList page, SocialEventSearchModel model)
         {
+            
             var query = _session.QueryOver<SocialEvent>()
-                                .Where(a => a.Parent == page);
+                                .Where(a => a.Parent == page && a.EndsAt >= DateTime.Today);
 
             
 
-            return query.OrderBy(x => x.BeginsAt).Desc.Paged(model.Page, page.PageSize);
+            return query.OrderBy(x => x.BeginsAt).Asc.Paged(model.Page, page.PageSize);
         }
 
         
