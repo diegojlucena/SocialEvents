@@ -4,7 +4,7 @@ using MrCMS.Website;
 
 namespace MrCMS.Web.Apps.SocialEvents.Widgets
 {
-    [OutputCacheable]
+    [WidgetOutputCacheable]
     public class NextXSocialEvents : Widget
     {
         public virtual int NumberOfSocialEvents { get; set; }
